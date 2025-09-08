@@ -1,0 +1,198 @@
+#Mini Project day 1
+
+#Personal Finance Helper
+income = int(input("Enter your income: "))
+expenses = int(input("Enter your expenses: "))
+savings_goals = int(input("Enter your savings goal that you would like to achieve: "))
+months = int(input("Enter the time period you would like to achieve this in (in months): "))
+
+remaining_balance = income - expenses
+
+if income < expenses:
+    print("Your income cannot be less than expenses. If so you cannnot save any money.")
+else:
+    total_savings = remaining_balance * months
+
+    goal_Reach = savings_goals / remaining_balance
+    print(f"YOur remaining balance is {remaining_balance} rupess")
+    print(f"Your total savings are {total_savings} rupess")
+    print(f"Time take to reach your goal is {round(goal_Reach,2)} months")
+
+#Travel time and cost estimator
+distance = float(input("Enter the distance in kilometers: "))
+mileage = float(input("Enter the mileage of the vehicle: "))
+fuel_price = float(input("Enter the fuel price per liter: "))
+speed = float(input("Enter the speed of the vehicle in kilometers: "))
+
+fuel_needed = distance / mileage
+cost = fuel_needed * fuel_price
+time_period = distance / speed
+
+print(f"Fuel required is {fuel_needed:.2f} liters")
+print(f"Total cost needed for the trip is {cost:.2f} rupees")
+print(f"Total time needed to reach your destination is {time_period:.2f} hours")
+
+#Fitness Progress calculator
+steps_walked = int(input("Enter the total steps walked (in meters): "))
+calories_per_km = int(input("Enter the calories burned per kilometer: "))
+weight = float(input("Enter your weight in kgs: "))
+speed = int(input("Enter the speed you were walking at: "))
+
+distance = steps_walked / 1000
+calories_burned = distance * calories_per_km
+time_spent = distance / speed
+
+print(f"Total distance walked is {distance:.1f} kilometers")
+print(f"Total calories burned are {calories_burned:.1f} kcal")
+print(f"Total time spent exercising is {time_spent:.2f} hours")
+
+#Electricity bill manager
+
+units_consumed = float(input("Enter the total units that were consumed for 3 months: "))
+
+average = units_consumed / 3
+print(f"Units used for one month are {average:.1f} units")
+time.sleep(2)
+
+if average <= 100:
+    print("The cost per unit is $5")
+    bill = average * 5
+elif average >= 101 and average < 200:
+    print("The cost per unit is $7")
+    bill = average * 7
+else:
+    print("The cost per unit is $10")
+    bill = average * 10
+
+time.sleep(2)
+bill_for_3months = bill * 3
+print(f"The bill for three months with the given units is {bill_for_3months:.0f} dollars")
+
+#Student marks analyser
+subject_1 = int(input("Enter the marks of subject 1: "))
+subject_2 = int(input("Enter the marks of subject 2: "))
+subject_3 = int(input("Enter the marks of subject 3: "))
+subject_4 = int(input("Enter the marks of subject 4: "))
+subject_5 = int(input("Enter the marks of subject 5: "))
+total_marks = subject_1 + subject_2 + subject_3 + subject_4 + subject_5
+average = total_marks / 5
+if average >= 90:
+    print("A grade")
+elif average >= 80:
+    print("B grade")
+elif average >=70:
+    print("C grade")
+elif average >=60:
+    print("D grade")
+elif average >=50:
+    print("E grade")
+else:
+    print("F grade")
+
+
+# Temperature Converter
+
+temperature_celsius = float(input("Enter the temperature in Celsius: "))
+
+fahrenheit = (temperature_celsius * 9/5) + 32
+
+kelvin = temperature_celsius + 273.15
+
+print(f"Temperature in Celsius: {temperature_celsius:.2f}°C")
+print(f"Temperature in Fahrenheit: {fahrenheit:.2f}°F")
+print(f"Temperature in Kelvin: {kelvin:.2f}K")
+
+#Time conversion
+
+total_minutes = int(input("Enter the total time in minutes: "))
+hours = total_minutes // 60
+minutes = total_minutes % 60
+
+print(f"Total time is {hours} hrs and {minutes} mins")
+
+total_seconds = int(input("Enter hte total time in seconds: "))
+hours = total_seconds // 3600
+remaining_seconds = total_seconds % 3600
+minutes = remaining_seconds //60
+seconds = remaining_seconds % 60
+print(f"Total time is {hours} hrs {minutes} mins and {seconds} secs")
+
+#Area and volume calculator 
+import math
+
+while True:
+    shape = input("Enter the shape you would like calculate the area, perimeter or volume of (rectangle, square, triangle, circle, cylinder, sphere): ").lower().strip()
+    
+    if shape == "rectangle":
+        length = int(input("Enter the length of the rectangle: "))
+        width = int(input("Enter the width of the rectangle: "))
+        area = length * width
+        perimeter = 2 * (length + width)
+        print(f"Area of the rectangle is {area}")
+        print(f"Perimeter of the rectange is {perimeter}")
+        break
+
+    elif shape == "square":
+        side = int(input("Enter the side of the square: " ))
+        perimeter = 4 * side
+        area = side ** 2
+        print(f"Area of square is {area}")
+        print(f"Perimeter of the square is {perimeter}")
+        break
+
+    elif shape == "triangle":
+        breadth = int(input("Enter the breadth of the triangle: "))
+        height = int(input("Enter the height of the triangle: "))
+        a = int(input("Enter the a side of triangle: "))
+        b = int(input("Enter the b side of triangle: "))
+        c = int(input("Enter the c side of triangle: "))
+        area = 1/2 * breadth * height
+        perimeter = a + b + c
+        print(f"Area of the triangle is {area}")
+        print(f"Perimeter of the triangle is {perimeter}")
+        break
+
+    elif shape == "cylinder":
+        radius = int(input("Enter the radius of the cylinder: "))
+        height = int(input("Enter the height of the cylinder: "))
+        volume = math.pi * radius**2 * height
+        area = 2 * math.pi * radius * height + 2 * math.pi * radius ** 2
+        print(f"Area of the cylinder is {area}")
+        print(f"Volume of the cylinder is {volume}")
+        break
+
+    elif shape == "circle":
+        radius = int(input("Enter the radius of the circle:"))
+        area = math.pi * radius**2
+        circumference = 2 * math.pi * radius
+        print(f"Area of the circle is {area}")
+        print(f"Circumference of the circle is {circumference}")
+        break
+
+    elif shape == "sphere":
+        radius = int(input("Enter the radius of the sphere: "))
+        volume = 4/3 * math.pi * radius**3
+        area = 4 * math.pi * radius** 2
+        print(f"Volume of the sphere is {volume}")
+        print(f"Area of the sphere is {area}")
+        break
+
+    else:
+        print("Invalid shape given. Please enter the shape from the given list.")
+        continue
+
+#Health Stat checker
+weight = float(input("Enter your weight in kgs: "))
+height = float(input("Enter your height in meters: "))
+
+bmi = weight / (height ** 2)
+print(f"Your BMI is {bmi:.2f}")
+
+if bmi < 18.5:
+    print("Underweight")
+elif bmi < 25:
+    print("Normal weight")
+elif bmi < 30:
+    print("Overweight")
+else:
+    print("Obese")
