@@ -395,3 +395,152 @@ while True:
         print("Invalid option. Please choose again.")
 
     time.sleep(1)
+
+#More loops and conditions
+
+#Library late fee calculator
+n = int(input("Enter how many books did you borrow? "))
+
+total_fine = 0
+
+for i in range(1,n+1):
+    time = int(input(f"For how many days was this book {i} late by? "))
+    
+    if time <= 5:
+        fine = time * 2
+        print(f"Book {i}: Fine is $2 per day -> ${fine}")
+        
+    elif time >= 6 and time <= 10:
+        fine = time * 5
+        print(f"Book {i}: Fine is $5 per day -> ${fine}")
+        
+    elif time > 10:
+        fine = time * 10
+        print(f"Book {i}: Fine is $10 per day -> ${fine}")
+        
+    else:
+        fine = 0
+        print("No fine.")
+
+    total_fine += fine
+
+print(f"\nTotal fine is {total_fine} dollars.")
+
+if total_fine > 500:
+    print("Your account has been blocked until you pay the fine.")
+else:
+    print("You can still borrow books.")
+
+#Bus ticketing system
+
+import time
+
+total_bus_seats = int(input("Enter the total bus seats available: "))
+available_seats = total_bus_seats
+
+while True:
+    print("\n--- Bus Ticketing System ---")
+    print("1. Book a ticket")
+    print("2. Cancel a ticket")
+    print("3. Check availability")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ").strip()
+
+    if choice == "1":
+        name = input("Enter passenger name: ")
+        number_of_seats = int(input("Enter the number of seats you would like to book: "))
+        if available_seats < number_of_seats:
+            print("Not enough seats available.")
+        else:
+            available_seats -= number_of_seats
+            print(f"Booking confirmed for {name}. Seats booked: {number_of_seats}")
+
+    elif choice == "2":
+        seats_to_cancel = int(input("Enter the number of seats you would like to cancel: "))
+        if available_seats + seats_to_cancel <= total_bus_seats:
+            available_seats += seats_to_cancel
+            print(f"Seat cancellation confirmed. Seats cancelled: {seats_to_cancel}")
+        else:
+            print("Invalid cancel request (exceeds total seats).")
+
+    elif choice == "3":
+        print(f"Total available seats: {available_seats}/{total_bus_seats}")
+
+    elif choice == "4":
+        print("Thank you for using our bus service.")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
+
+    time.sleep(2)
+
+#Ticket Booking System
+import time
+
+total_seats = int(input("Enter total available seats: "))
+available_seats = total_seats
+revenue = 0
+ticket_price = {"normal": 150, "vip": 300}
+
+while True:
+    print("\n--- Cinema Booking System ---")
+    print("1. Book a ticket")
+    print("2. Cancel a ticket")
+    print("3. Check seats")
+    print("4. Check revenue")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ").strip()
+
+    if choice == "1":
+        seat_type = input("Seat type (normal/vip): ").strip().lower()
+
+        if seat_type not in ticket_price:
+            print("Invalid seat type. Choose 'normal' or 'vip'")
+            continue
+
+        seats_to_book = int(input("How many tickets would you like to book? "))
+        if seats_to_book > available_seats:
+            print("Not enough seats available.")
+        else:
+            available_seats -= seats_to_book
+            cost = seats_to_book * ticket_price[seat_type]
+            revenue += cost
+
+            print(f"Booking confirmed! {seats_to_book} {seat_type} seats booked.")
+            print(f"Total cost: ${cost}")
+
+    elif choice == "2":
+        seat_type = input("Which seat type do you want to cancel (normal/vip): ").strip().lower()
+
+        if seat_type not in ticket_price:
+            print("Invalid seat type.")
+            continue
+
+        seats_to_cancel = int(input("How many seats to cancel? "))
+
+        if seats_to_cancel > (total_seats - available_seats):
+            print("You cannot cancel more than the seats already booked.")
+        else:
+            available_seats += seats_to_cancel
+            refund = seats_to_cancel * ticket_price[seat_type]
+            revenue -= refund
+            print(f"{seats_to_cancel} {seat_type} seats cancelled. Refund: ${refund}")
+
+    elif choice == "3":
+        print(f"Available seats: {available_seats}/{total_seats}")
+
+    elif choice == "4":
+        print(f"Total revenue: ${revenue}")
+
+    elif choice == "5":
+        print("Thank you for using the cinema booking system!")
+        break
+
+    else:
+        print("Invalid choice. Try again.")
+
+    time.sleep(1)
+
