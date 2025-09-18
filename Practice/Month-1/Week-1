@@ -544,3 +544,80 @@ while True:
 
     time.sleep(1)
 
+#Some more bigger mini projects combining loops, conditionals and operations
+
+#Parking Lot System
+
+import time
+
+cars_slots = int(input("Enter the number of cars slots available: "))
+bike_slots = int(input("Enter the number of bike slots available: "))
+
+available_cars = cars_slots
+available_bikes = bike_slots
+
+while True:
+
+    print("\n---Parking Lot Management---" \
+    "\n1. Park a vehicle" \
+    "\n2. Remove a vehicle" \
+    "\n3. Check availability" \
+    "\n4. Exit")
+
+    choice = input("Enter your choice: ").strip()
+
+    if choice == "1":
+        vehicle_type = input("Enter the vehicle type (car/bike): ").strip().lower()
+        if vehicle_type == "car":
+            if available_cars <= 0:
+                print("No space available.")
+            else:
+                available_cars -= 1
+                print("Car parked successfully. Please proceed to find the available slot.")
+        elif vehicle_type == "bike":
+            if available_bikes <= 0:
+                print("No space available.")
+            else:
+                available_bikes -= 1
+                print("Bike parked succesfully. Please proceed to find the available slot.")        
+        else:
+            print("Invalid car type")
+        time.sleep(2)
+
+    elif choice == "2":
+        vehicle_type = input("Enter the vehicle type (car/bike): ").strip().lower()
+        if vehicle_type == "car":
+            if available_cars < cars_slots:
+                hours_parked = int(input("How many hours was the car parked for: "))
+                available_cars += 1
+                cost = hours_parked * 50
+                print(f"Cost of parking the car for {hours_parked} hrs is {cost} INR")
+            else:
+                print("No car is currently parked to remove.")
+        elif vehicle_type == "bike":
+            if available_bikes < bike_slots:
+                hours_parked = int(input("How many hours was the car parked for: "))
+                available_bikes += 1
+                cost = hours_parked * 20
+                print(f"Cost of parking the bike for {hours_parked} hrs is {cost} INR")
+            else:
+                print("No bike is currently parked to remove")
+        else:
+            print("Invalid vehicle type.")
+        time.sleep(2)
+
+    elif choice == "3":
+        vehicle_type = input("Enter the vehicle type (car/bike): ").strip().lower()
+        if vehicle_type == "car":
+            print(f"The available slots for car parking is {available_cars}")
+        elif vehicle_type == "bike":
+            print(f"The available slots for bike parking is {available_bikes}")
+        time.sleep(2)
+
+    elif choice == "4":
+        print("Thank you for parking your car at our parking lot. Goodbye!")
+        break
+
+    else:
+        print("Invalid Choice. Please choose the correct option.")
+
