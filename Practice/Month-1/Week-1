@@ -706,4 +706,94 @@ while True:
         print("Thanks for playing the quiz game. Goodbye!")
         break
 
+#Hotel Room Booking System
+import time
+
+#Initialize room counts 
+
+single_rooms = 5
+double_rooms = 5
+suite_rooms = 2
+
+#Prices
+
+single_rooms_price = 1000
+double_rooms_price = 2000
+suite_rooms_price = 5000
+
+while True:
+    print("---Hotel Room Booking System---" \
+    "\n1. Book a room" \
+    "\n2. Check out" \
+    "\n3. Show available rooms" \
+    "\n4. Exit")
+
+    choice = input("Enter your choice: ").strip().lower()
+    time.sleep(2)
+    if choice == "1":
+        name = input("Enter your name: ").strip().title()
+        time.sleep(1)
+        room_type = input("Enter the room type you would like to check in (single/double/suite): ").strip().lower()
+        time.sleep(1)
+        if room_type == "single":
+            if single_rooms <= 0:
+                print("Single bedroom rooms aren't available. Sorry for the inconvenience.")
+            else:
+                single_rooms -= 1
+                print(f"Thank you for booking a single bedroom {name}.")
+        elif room_type == "double":
+            if double_rooms <= 0:
+                print("Double bedroom rooms aren't available. Sorry for the inconvenience.")
+            else:
+                double_rooms -= 1
+                cost = double_rooms_price * double_rooms
+                print(f"Thank you for booking a double bedroom {name}.")
+        elif room_type == "suite":
+            if suite_rooms <= 0:
+                print("Suite bedroom rooms aren't available. Sorry for the inconvenience.")
+            else:
+                suite_rooms -= 1
+                cost = suite_rooms_price * suite_rooms
+                print(f"Thank you for booking a suite bedroom {name} .")
+        else:
+            print("Invalid room type")
+            
+    elif choice == "2":
+        room_type = input("What room are you checking out from (single/double/suite)? ").strip().lower()
+        time.sleep(1)
+        if room_type == "single":
+            if single_rooms < 5:
+                single_rooms += 1
+                print(f"Your bill is {single_rooms_price} INR. Thank you for staying!")
+            else:
+                print("No record found")
+        elif room_type == "double":
+            if double_rooms < 5:
+                double_rooms += 1
+                print(f"Your bill is {double_rooms_price} INR. Thank you for staying!")
+            else:
+                print("No record found")
+        elif room_type == "suite":
+            if suite_rooms < 5:
+                suite_rooms += 1
+                print(f"Your bill is {suite_rooms_price} INR. Thank you for staying!")
+            else:
+                print("No record found")
+        else:
+            print("Invalid room type")
+                
+    elif choice == "3":
+        print(f"\nAvaialable rooms are: " \
+        f"\n Single Rooms: {single_rooms}" \
+        f"\n Double Rooms: {double_rooms}" \
+        f"\n Suite Rooms: {suite_rooms}")
+
+    elif choice == "4":
+        print("Thank you for using our hotel booking service. Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Try again")
+
+
 
