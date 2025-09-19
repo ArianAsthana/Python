@@ -621,3 +621,89 @@ while True:
     else:
         print("Invalid Choice. Please choose the correct option.")
 
+#Weekend brushups (single loops and conditionals) 
+
+#Quiz game
+
+import time
+
+print("---Welcome to the Quiz game---")
+
+time.sleep(2)
+
+total_score = 5
+
+while True:
+    score = 0
+    
+    print("\n1. Who won the 2021 Formula one world championship? " \
+    "A. Max Verstappen B. Charles Leclerc C. Lewis Hamilton D. Fernando Alonso")
+    option = input("Enter your choice: ").strip().lower()
+    if option == "a":
+        score += 1
+        print("Correct answer. Well done!")
+    else:
+        print("Incorrect answer. Max verstappen won the 2021 WDC.")
+    
+    time.sleep(2)
+
+    print("\n2. Who has the most WDC in formula one? " \
+    "A. Max Verstappen B. Michael Schumacher C. Lewis Hamilton D. Fernando Alonso")
+    option = input("Enter your choice: ").strip().lower()
+    if option == "b" or option == "c":
+        score += 1
+        print("Correct answer. Well done!")
+    else:
+        print("Incorrect answer. Michael Schumacher and Lewis Hamilton hold the join record for the most WDC's")
+
+    time.sleep(2)
+
+    print("\n3. Who won the 2016 spanish grand prix in formula one? " \
+    "A. Max Verstappen B. Nico Rosberg C. Lewis Hamilton D. Daniel Riccardo")
+    option = input("Enter your choice: ").strip().lower()
+    if option == "a":
+        score += 1
+        print("Correct answer. Well done!")
+    else:
+        print("Incorrect answer. Max verstappen won the 2016 spanish grand prix.")
+
+    time.sleep(2)
+
+    print("\n4. Which team in formula one won the 2007 constructors championship? " \
+    "A. McLaren B. Renault C. Redbull D. Ferrari")
+    option = input("Enter your choice: ").strip().lower()
+    if option == "d":
+        score += 1
+        print("Correct answer. Well done!")
+    else:
+        print("Incorrect answer. Ferrari won the 2007 WCC after Mclaren were disqualified after found guilty for cheating")
+
+    time.sleep(2)
+
+    print("\n5. What is the track name for the belgium grand prix? " \
+    "A. Spa Francorshamps B. Emilia-Romagna C. Silverstone D. Suzuka")
+    option = input("Enter your choice: ").strip().lower()
+    if option == "a":
+        score += 1
+        print("Correct answer. Well done!")
+    else:
+        print("Incorrect answer. The track name for the belgium grand prix is known as Spa Francorshamps.")
+
+    time.sleep(2)
+    print(f"\n--Your scorecard for the results of your quiz game are - " \
+    f"\n Score: {score}/{total_score}")
+    if score == 5:
+        print("Excellent job!")
+    elif score >= 3:
+        print("Good try!")
+    else:
+        print("Try again!")
+
+    time.sleep(2)
+    
+    play_again = input("\nDo you want to play the game again (yes/no)? ").strip().lower()
+    if play_again == "no":
+        print("Thanks for playing the quiz game. Goodbye!")
+        break
+
+
