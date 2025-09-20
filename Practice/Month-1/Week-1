@@ -795,5 +795,72 @@ while True:
     else:
         print("Invalid choice. Try again")
 
+#Food ordering menu
 
+import time
+
+# Menu items and prices
+Pizza = 150
+Burger = 100
+Pasta = 120
+Cold_Drink = 50
+
+pizza_count = 0
+burger_count = 0
+pasta_count = 0
+cold_drink_count = 0
+total_cost = 0
+
+while True:
+    print("\n---Rexy's Joint Menu---"
+          "\n1. Pizza - ₹150"
+          "\n2. Burger - ₹100"
+          "\n3. Pasta - ₹120"
+          "\n4. Cold Drink - ₹50")
+
+    choice = input("\nWhat would you like to have? ").strip().lower()
+    quantity = int(input("How many would you like? "))
+
+    if choice == "pizza":
+        pizza_count += quantity
+        total_cost += Pizza * quantity
+    elif choice == "burger":
+        burger_count += quantity
+        total_cost += Burger * quantity
+    elif choice == "pasta":
+        pasta_count += quantity
+        total_cost += Pasta * quantity
+    elif choice in ["cold_drink", "cold drink"]:
+        cold_drink_count += quantity
+        total_cost += Cold_Drink * quantity
+    else:
+        print("Invalid Choice. Please choose correct option.")
+        continue
+
+    order_more = input("\nWould you like to order more? (yes/no): ").strip().lower()
+    if order_more in ["yes", "y"]:
+        continue
+    elif order_more in ["no", "n"]:
+        break
+    else:
+        print("Invalid choice, assuming you want to continue.")
+        continue
+
+time.sleep(2)
+
+print("\n--- Bill Summary ---")
+print(f"Pizza: {pizza_count} x {Pizza} = {pizza_count * Pizza}")
+print(f"Burger: {burger_count} x {Burger} = {burger_count * Burger}")
+print(f"Pasta: {pasta_count} x {Pasta} = {pasta_count * Pasta}")
+print(f"Cold Drink: {cold_drink_count} x {Cold_Drink} = {cold_drink_count * Cold_Drink}")
+print(f"\nTotal Bill: ₹{total_cost}")
+
+if total_cost > 500:
+    discount = 0.1 * total_cost
+    final_cost = total_cost - discount
+    print(f"Discount Applied: ₹{discount}")
+    print(f"Final Bill After Discount: ₹{final_cost}")
+
+time.sleep(1)
+print("\nThank you for ordering at Rexy's Joint. Goodbye!")
 
