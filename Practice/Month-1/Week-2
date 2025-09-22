@@ -45,4 +45,55 @@ while True:
     else:
         print("Invalid option. Please choose again.")
 
-#
+#To do task manager
+
+import time
+
+tasks = []
+
+while True:
+    print("\n--- To-Do List Options ---" \
+    "\n1. Add Task" \
+    "\n2. Mark Task as Done" \
+    "\n3. Show Tasks" \
+    "\n4. Exit")
+
+    choice = input("\nEnter your choice: ").strip()
+
+    if choice == "1":
+        task = input("Enter a new task: ").capitalize()
+        tasks.append({"task": task, "done": False})
+        print("Task added.")
+        time.sleep(1)
+
+    elif choice == "2":
+        if not tasks:
+            print("No tasks available.")
+        else:
+            for i, t in enumerate(tasks):
+                status = "✓" if t["done"] else "✗"
+                print(f"{i+1}. {t['task']} [{status}]")
+            index = int(input("Enter task number to mark as done: ")) - 1
+            if 0 <= index < len(tasks):
+                tasks[index]["done"] = True
+                print("Task marked as done.")
+            else:
+                print("Invalid task number.")
+        time.sleep(1)
+
+    elif choice == "3":
+        if not tasks:
+            print("No tasks yet.")
+        else:
+            print("\n--- To-Do List ---")
+            for i, t in enumerate(tasks):
+                status = "✓" if t["done"] else "✗"
+                print(f"{i+1}. {t['task']} [{status}]")
+        time.sleep(1)
+
+    elif choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid option.")
+
