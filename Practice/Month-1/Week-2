@@ -1,1 +1,48 @@
+#Basic List Problems
 
+#Grocery Store
+
+import time
+
+Grocery_List = []
+
+while True:
+    print("\n---Grocery List Options---" \
+    "\n1. Add Item" \
+    "\n2. Remove Item" \
+    "\n3. Show List" \
+    "\n4. Exit")
+    
+    choice = input("\nEnter your choice: ").strip()
+
+    if choice == "1":
+        item = input("What item would you like to add to your list? ").title()
+        print("Item successfully added to the list.")
+        Grocery_List.append(item)
+        pass
+        time.sleep(2)
+    elif choice == "2":
+        item = input("What item would you like to remove from the list? ").title()
+        if item not in Grocery_List:
+            print("Item not in the list.")
+        else:
+            Grocery_List.remove(item)
+            print("Item successfully removed from the list.")
+        pass
+        time.sleep(2)
+    elif choice == "3":
+        if Grocery_List == 0:
+            print("Grocery List is empty.")
+        else:
+            print("\nGrocery List is:")
+            for i in range(len(Grocery_List)):
+                print(i+1, Grocery_List[i], sep=". ")
+        pass
+        time.sleep(2)
+    elif choice == "4":
+        print("Thank you for shopping at our store!")
+        break
+    else:
+        print("Invalid option. Please choose again.")
+
+#
