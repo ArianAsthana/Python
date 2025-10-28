@@ -962,3 +962,71 @@ while True:
         break
     else:
         print("Invalid option.")
+
+#Dictionaries
+
+#Contact Book
+contacts = {
+    "Aryan": "6304388018",
+    "Ajay": "9391656680"
+}
+
+while True:
+    print("\nOperations you can perform:" \
+          "\n1. Add a contact" \
+          "\n2. Remove a contact" \
+          "\n3. Modify a contact" \
+          "\n4. Show all contacts" \
+          "\n5. View a specific contact" \
+          "\n6. Exit")
+
+    choice = input("\nEnter your choice: ").strip()
+
+    if choice == "1":
+        name = input("Enter contact name: ").title()
+        if name in contacts:
+            print("Name already exists.")
+        else:
+            number = input("Enter phone number: ")
+            contacts[name] = number
+            print("Contact added successfully.")
+
+    elif choice == "2":
+        name = input("Enter the contact name to delete: ").title()
+        if name not in contacts:
+            print("No such contact found.")
+        else:
+            del contacts[name]
+            print("Contact deleted successfully.")
+
+    elif choice == "3":
+        name = input("Enter the name to modify: ").title()
+        if name not in contacts:
+            print("Contact not found.")
+        else:
+            number = input("Enter the new phone number: ")
+            contacts[name] = number
+            print("Contact updated successfully.")
+
+    elif choice == "4":
+        if len(contacts) == 0:
+            print("Contact book is empty.")
+        else:
+            print("\n--- All Contacts ---")
+            for i, (name, number) in enumerate(contacts.items()):
+                print(f"{i+1}. {name}: {number}")
+
+    elif choice == "5":
+        name = input("Enter the name to view: ").title()
+        if name in contacts:
+            print(f"{name}: {contacts[name]}")
+        else:
+            print("No such contact found.")
+
+    elif choice == "6":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
+
