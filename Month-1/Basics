@@ -1030,3 +1030,71 @@ while True:
     else:
         print("Invalid choice. Please try again.")
 
+#File operations
+#Sample file ops
+
+import time
+
+while True:
+    print("\n--- Notes Manager ---")
+    print("1. Add a note")
+    print("2. View all notes")
+    print("3. Search notes")
+    print("4. Delete all notes")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        note = input("Enter your note: ")
+        with open("notes.txt", "a") as file:
+            file.write(note + "\n")
+        print("Note added successfully!")
+        time.sleep(1)
+
+    elif choice == "2":
+        try:
+            with open("notes.txt", "r") as file:
+                notes = file.readlines()
+                if not notes:
+                    print("No notes available.")
+                else:
+                    print("\nYour Notes:")
+                    for i, note in enumerate(notes, start=1):
+                        print(f"{i}. {note.strip()}")
+        except FileNotFoundError:
+            print("No notes found yet.")
+        time.sleep(1)
+
+    elif choice == "3":
+        keyword = input("Enter a keyword to search: ").lower()
+        try:
+            with open("notes.txt", "r") as file:
+                notes = file.readlines()
+                found = False
+                for note in notes:
+                    if keyword in note.lower():
+                        print(note.strip())
+                        found = True
+                if not found:
+                    print("No matches found.")
+        except FileNotFoundError:
+            print("No notes found yet.")
+        time.sleep(1)
+
+    elif choice == "4":
+        confirm = input("Delete all notes? (y/n): ").lower()
+        if confirm == "y":
+            open("notes.txt", "w").close()
+            print("All notes deleted.")
+        else:
+            print("Cancelled.")
+        time.sleep(1)
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Try again.")
+
